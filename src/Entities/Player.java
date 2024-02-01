@@ -4,12 +4,12 @@ import Engine.GameBoard;
 import Engine.Key;
 import Engine.Keyboard;
 import Engine.Sprite;
+import Const.Const;
 
 import java.awt.*;
 
 public class Player extends Sprite {
 
-    private int speed;
     public Player(GameBoard board, int width, int height) {
         super(0, 0, width, height);
         int x = board.getPreferredSize().width;
@@ -23,9 +23,10 @@ public class Player extends Sprite {
 
     @Override
     public void update(Keyboard keyboard) {
-        if (keyboard.isKeyDown(Key.Shift)) { this.speed = 8; } else { this.speed = 4; }
-        if (keyboard.isKeyDown(Key.Right)) { this.setX(this.getX() + this.speed); }
-        if (keyboard.isKeyDown(Key.Left)) { this.setX(this.getX() - this.speed); }
+        int speed;
+        if (keyboard.isKeyDown(Key.Shift)) { speed = Const.PLAYER_SPEED_BOOST; } else { speed = Const.PLAYER_SPEED; }
+        if (keyboard.isKeyDown(Key.Right)) { this.setX(this.getX() + speed); }
+        if (keyboard.isKeyDown(Key.Left)) { this.setX(this.getX() - speed); }
 
     }
 

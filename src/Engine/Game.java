@@ -3,6 +3,7 @@ package Engine;
 import Entities.Ball;
 import Entities.BoxCollection;
 import Entities.Player;
+import Const.Const;
 
 import java.awt.*;
 
@@ -11,18 +12,17 @@ public class Game {
 
 	Player player;
 	Ball ball;
-
 	BoxCollection collection;
 
 
 
 	public Game(GameBoard board) {
 
-		player = new Player(board, 150, 20);
+		player = new Player(board, Const.PLAYER_WIDTH, Const.PLAYER_HEIGHT);
 
-		ball = new Ball(board, 15, 15);
+		ball = new Ball(board, Const.BALL_WIDTH, Const.BALL_HEIGHT);
 
-		collection = new BoxCollection(6);
+		collection = new BoxCollection(Const.BOX_ROWS);
 
 	}
 

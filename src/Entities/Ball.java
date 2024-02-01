@@ -5,13 +5,13 @@ import Engine.GameBoard;
 import Engine.Keyboard;
 import Engine.Sprite;
 
+
 import java.awt.*;
 import java.util.Random;
 
 public class Ball extends Sprite {
 
     private double rads;
-    private double speed = 5;
 
     public double generateRandomAngle() {
         Random rand = new Random();
@@ -29,7 +29,8 @@ public class Ball extends Sprite {
 
         this.setY((int) (y * 0.5));
 
-        this.rads = 19*Math.PI/180;
+        // this.rads = 19*Math.PI/180;
+        this.rads = generateRandomAngle();
 
     }
 
@@ -52,8 +53,8 @@ public class Ball extends Sprite {
             System.exit(0);
         }
 
-        double x = Math.cos(rads) * speed;
-        double y = Math.sin(rads) * speed;
+        double x = Math.cos(rads) * Const.BALL_SPEED;
+        double y = Math.sin(rads) * Const.BALL_SPEED;
         // System.out.println("Ange = " + rads * 180 / Math.PI + "  X = " + x + "  Y = " + y );
         this.setX(getX() + (int)x);
 
