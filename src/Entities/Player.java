@@ -28,6 +28,13 @@ public class Player extends Sprite {
         if (keyboard.isKeyDown(Key.Right)) { this.setX(this.getX() + speed); }
         if (keyboard.isKeyDown(Key.Left)) { this.setX(this.getX() - speed); }
 
+        if (this.getX() < 0) {
+            this.setX(0);
+        }
+        if (this.getX() + this.getWidth() > Const.WINDOW_WIDTH) {
+            this.setX(Const.WINDOW_WIDTH - this.getWidth());
+        }
+
     }
 
     @Override

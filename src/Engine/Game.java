@@ -4,6 +4,7 @@ import Entities.Ball;
 import Entities.BoxCollection;
 import Entities.Player;
 import Const.Const;
+import Score.PlayerScore;
 
 import java.awt.*;
 
@@ -13,6 +14,8 @@ public class Game {
 	Player player;
 	Ball ball;
 	BoxCollection collection;
+	PlayerScore score;
+
 
 
 
@@ -24,18 +27,24 @@ public class Game {
 
 		collection = new BoxCollection(Const.BOX_ROWS);
 
+		score = new PlayerScore(10, 10);
+
 	}
 
 	public void update(Keyboard keyboard) {
-
-
 		player.update(keyboard);
 		ball.update(keyboard);
 		if (ball.intersects(player)) {
 			ball.updateAngle(player);
 		}
 
-		collection.update(ball);
+		int points = collection.update(ball);
+		if (points > 0) {
+			score.setScore(score.getScore() + points);
+			ball.updateSpeed(score.getScore());
+		}
+
+
 
 	}
 
@@ -43,5 +52,7 @@ public class Game {
 		player.draw(graphics);
 		ball.draw(graphics);
 		collection.draw(graphics);
+		score.draw(graphics);
+
 	}
 }
