@@ -20,9 +20,6 @@ public class Ball extends Sprite {
     public Ball(GameBoard board, int width, int height) {
         super(0, 0, width, height);
 
-        int x = board.getPreferredSize().width;
-        int y = board.getPreferredSize().height;
-
         // Sets player in the middle
         this.setX(Const.BALL_START_X);
         this.setY(Const.BALL_START_Y);

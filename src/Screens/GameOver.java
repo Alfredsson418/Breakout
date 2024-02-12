@@ -1,6 +1,5 @@
 package Screens;
 
-import Engine.Game;
 
 import javax.swing.*;
 import Const.Const;

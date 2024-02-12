@@ -7,7 +7,6 @@ import java.awt.event.KeyEvent;
 
 public class Program extends JFrame {
 	GameBoard board;
-	GameOver gameOver;
 	public Program() {
 
 		board = new GameBoard();

@@ -34,7 +34,7 @@ public class Const {
     public static final int BALL_LIVES_X = 300;
     public static final int BALL_LIVES_Y = Const.WINDOW_HEIGHT - 30;
     public static final int BALL_START_X = Const.WINDOW_WIDTH/2 - Const.BALL_WIDTH/2;
-    public static final int BALL_START_Y = (int) (Const.WINDOW_HEIGHT / 2);
+    public static final int BALL_START_Y = (Const.WINDOW_HEIGHT / 2);
     // Scoreboard
     public static final int SCORE_X = 100;
     public static final int SCORE_Y = Const.WINDOW_HEIGHT - 30;

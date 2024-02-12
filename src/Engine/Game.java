@@ -20,7 +20,6 @@ public class Game {
 
 	GameBoard board;
 
-	Pause pause = new Pause();
 
 
 
