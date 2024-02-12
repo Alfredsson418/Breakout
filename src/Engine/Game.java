@@ -5,7 +5,9 @@ import Entities.BoxCollection;
 import Entities.Player;
 import Const.Const;
 import Score.PlayerScore;
+import Screens.Pause;
 
+import javax.swing.*;
 import java.awt.*;
 
 
@@ -15,6 +17,10 @@ public class Game {
 	Ball ball;
 	BoxCollection collection;
 	PlayerScore score;
+
+	GameBoard board;
+
+	Pause pause = new Pause();
 
 
 
@@ -27,11 +33,27 @@ public class Game {
 
 		collection = new BoxCollection(Const.BOX_ROWS);
 
-		score = new PlayerScore(10, 10);
+		score = new PlayerScore();
+
+		this.board = board;
+
+
 
 	}
 
 	public void update(Keyboard keyboard) {
+		if (ball.getLives() < 0) {
+			JOptionPane.showMessageDialog(board, "No more lives left, sorry :)");
+			board.stop();
+			return;
+		}
+
+		if (collection.isAllDestoryed()) {
+			JOptionPane.showMessageDialog(board, "Good job! Your score is " + score.getScore());
+			board.stop();
+			return;
+		}
+
 		player.update(keyboard);
 		ball.update(keyboard);
 		if (ball.intersects(player)) {
@@ -46,6 +68,10 @@ public class Game {
 
 
 
+
+
+
+
 	}
 
 	public void draw(Graphics2D graphics) {
@@ -53,6 +79,7 @@ public class Game {
 		ball.draw(graphics);
 		collection.draw(graphics);
 		score.draw(graphics);
+		ball.drawLives(graphics);
 
 	}
 }

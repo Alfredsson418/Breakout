@@ -1,11 +1,15 @@
 package Engine;
 
+import Screens.GameOver;
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 public class Program extends JFrame {
 	GameBoard board;
+	GameOver gameOver;
 	public Program() {
+
 		board = new GameBoard();
 		add(board);
 		setResizable(true);
@@ -13,6 +17,7 @@ public class Program extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		board.start();
+
 	}
 	
 	@Override

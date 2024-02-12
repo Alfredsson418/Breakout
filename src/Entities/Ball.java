@@ -14,10 +14,8 @@ public class Ball extends Sprite {
     private double rads;
     private int speed = Const.BALL_START_SPEED;
 
-    public double generateRandomAngle() {
-        Random rand = new Random();
-        return rand.nextDouble(2*Math.PI);
-    }
+    private int lives = Const.BALL_START_LIVES;
+
 
     public Ball(GameBoard board, int width, int height) {
         super(0, 0, width, height);
@@ -26,32 +24,48 @@ public class Ball extends Sprite {
         int y = board.getPreferredSize().height;
 
         // Sets player in the middle
-        this.setX(x/2 - getWidth()/2);
-
-        this.setY((int) (y * 0.5));
+        this.setX(Const.BALL_START_X);
+        this.setY(Const.BALL_START_Y);
 
         // this.rads = 19*Math.PI/180;
         this.rads = generateRandomAngle();
 
     }
 
+    public double generateRandomAngle() {
+        Random rand = new Random();
+        double rad = rand.nextDouble(Math.PI);
+
+        while (rad > 2.8 || rad < 0.34) {
+            rad = rand.nextDouble(Math.PI);
+        }
+
+        return rad;
+    }
+
     @Override
     public void update(Keyboard keyboard) {
-
+        if (this.rads > 2 * Math.PI) { this.rads -= 2 * Math.PI; }
+        // System.out.println(this.rads);
         if (this.getX() + this.getWidth() > Const.WINDOW_WIDTH) { // Right
             this.rads = Math.PI - this.rads;
             this.setX(Const.WINDOW_WIDTH - this.getWidth());
 
         } else if (this.getX() < 0) { // Left
             this.rads = Math.PI - this.rads;
+            this.setX(0);
             // this.setX(this.getWidth());
 
         }else if (this.getY() < 0) { // Top
             this.rads = this.rads * -1;
             // this.setY(0);
+            this.setY(0);
 
         } else if (this.getY() + this.getHeight() > Const.WINDOW_HEIGHT) { // Bottom
-            System.exit(0);
+            this.lives -= 1;
+            this.setX(Const.BALL_START_X);
+            this.setY(Const.BALL_START_Y);
+            this.rads = generateRandomAngle();
         }
 
         double x = Math.cos(rads) * this.speed;
@@ -131,10 +145,22 @@ public class Ball extends Sprite {
     }
 
     public void updateSpeed(int score) {
-        if (score % 10 == 0) {
-            this.speed += 2;
+        if (score % 5 == 0) {
+            this.speed += 1;
         }
 
+    }
+
+
+
+    public void drawLives(Graphics2D graphics) {
+        graphics.setColor(Color.YELLOW);
+        graphics.setFont(Const.SCORE_FONT);
+        graphics.drawString("Lives: " + this.lives, Const.BALL_LIVES_X, Const.BALL_LIVES_Y);
+    }
+
+    public int getLives() {
+        return this.lives;
     }
 
 

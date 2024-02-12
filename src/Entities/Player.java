@@ -18,7 +18,7 @@ public class Player extends Sprite {
         // Sets player in the middle
         setX(x/2 - getWidth()/2);
 
-        setY((int) (y * 0.9));
+        setY((int) (y * 0.85));
     }
 
     @Override
@@ -43,6 +43,7 @@ public class Player extends Sprite {
         graphics.fillRect(getX(), getY(), getWidth(), getHeight());
 
     }
+
 
 
 }

@@ -9,9 +9,9 @@ public class PlayerScore {
     private final int x;
     private final int y;
 
-    public PlayerScore(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public PlayerScore() {
+        this.x = Const.SCORE_X;
+        this.y = Const.SCORE_Y;
     }
 
     public void setScore(int score) { this.score = score; }

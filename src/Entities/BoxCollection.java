@@ -40,9 +40,19 @@ public class BoxCollection {
         for (Box box : collection) {
             if (box.isDestroyed) { continue; }
             box.draw(graphics);
-            graphics.setColor(Color.YELLOW);
-            graphics.drawString(String.valueOf(box.lives), box.getX() + box.getWidth() / 2, box.getY() + box.getHeight() / 2);
+            // graphics.setColor(Color.YELLOW);
+            // graphics.drawString(String.valueOf(box.lives), box.getX() + box.getWidth() / 2, box.getY() + box.getHeight() / 2);
         }
+    }
+
+    public boolean isAllDestoryed() {
+        for (Box box : collection) {
+            if (!box.isDestroyed) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 

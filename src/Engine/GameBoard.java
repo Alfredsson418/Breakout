@@ -10,9 +10,12 @@ public class GameBoard extends JComponent {
 	private final int FPS = 40; 
 	private Game game;
 	private Keyboard keyboard;
+
+	private boolean stop = false;
 	public GameBoard() {
 		keyboard = new Keyboard();
 		game = new Game(this);
+
 	}
 	
 	@Override
@@ -42,7 +45,7 @@ public class GameBoard extends JComponent {
 	}
 
 	public void start() {
-		while(true) {
+		while(!stop) {
 			game.update(keyboard);
 			try {
 				Thread.sleep(1000 / FPS); //Throttle thread
@@ -51,5 +54,9 @@ public class GameBoard extends JComponent {
 			}
 			this.repaint();
 		}
+	}
+
+	public void stop() {
+		this.stop = true;
 	}
 }
