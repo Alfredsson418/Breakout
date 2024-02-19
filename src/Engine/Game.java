@@ -5,7 +5,6 @@ import Entities.BoxCollection;
 import Entities.Player;
 import Const.Const;
 import Score.PlayerScore;
-import Screens.Pause;
 
 import javax.swing.*;
 import java.awt.*;

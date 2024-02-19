@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class GameBoard extends JComponent {
+public class GameBoard extends JPanel {
 	private final int FPS = 40; 
 	private Game game;
 	private Keyboard keyboard;
