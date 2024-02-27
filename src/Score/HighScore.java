@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class HighScore extends JPanel {
 
-    private JPanel TitlePanel;
     private JLabel title;
 
     private JList list;
@@ -21,7 +20,7 @@ public class HighScore extends JPanel {
         this.title.setText(Const.HIGH_SCORE_TITLE);
         this.add(this.title, BorderLayout.NORTH);
 
-        this.highScore = new DefaultListModel<PlayerScore>();
+        this.highScore = new DefaultListModel<>();
 
         this.list= new JList(this.highScore);
         this.list.setFocusable(false);

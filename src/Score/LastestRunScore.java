@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class LastestRunScore extends JPanel {
 
-    private JPanel TitlePanel;
     private JLabel title;
 
     private JList list;
@@ -22,7 +21,7 @@ public class LastestRunScore extends JPanel {
         this.title.setText(Const.LATEST_RUN_TITLE);
         this.add(this.title, BorderLayout.NORTH);
 
-        this.latest = new DefaultListModel<String>();
+        this.latest = new DefaultListModel<>();
 
         this.list= new JList(this.latest);
         this.list.setFocusable(false);
@@ -33,7 +32,7 @@ public class LastestRunScore extends JPanel {
     }
 
     public void addRun(int score) {
-        this.latest.add(0, "Score: " + String.valueOf(score));
+        this.latest.add(0, "Score: " + score);
     }
 
     @Override
