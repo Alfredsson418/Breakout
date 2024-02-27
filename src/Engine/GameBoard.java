@@ -1,18 +1,23 @@
 package Engine;
 
 import Const.Const;
+import Score.ScoreBoard;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class GameBoard extends JComponent {
+public class GameBoard extends JPanel {
 	private final int FPS = 40; 
 	private Game game;
 	private Keyboard keyboard;
+
+
+	private boolean stop = false;
 	public GameBoard() {
 		keyboard = new Keyboard();
 		game = new Game(this);
+
 	}
 	
 	@Override
@@ -42,7 +47,7 @@ public class GameBoard extends JComponent {
 	}
 
 	public void start() {
-		while(true) {
+		while(!stop) {
 			game.update(keyboard);
 			try {
 				Thread.sleep(1000 / FPS); //Throttle thread
@@ -51,5 +56,20 @@ public class GameBoard extends JComponent {
 			}
 			this.repaint();
 		}
+	}
+
+	public void stop() {
+		this.stop = true;
+	}
+
+    public void restart() {
+        this.game.getBall().setLives(Const.BALL_START_LIVES);
+        this.game.getScoreBoard().getCurrentScore().setScore(0);
+        this.game.getBall().reset();
+		this.game.getCollection().reset();
+    }
+
+	public void setScoreBoard(ScoreBoard scoreBoard) {
+		game.setScoreBoard(scoreBoard);
 	}
 }

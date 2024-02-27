@@ -1,8 +1,8 @@
 package Entities;
 
+import Const.Const;
 import Engine.Keyboard;
 import Engine.Sprite;
-import Const.Const;
 
 import java.awt.*;
 
@@ -23,7 +23,7 @@ public class Box extends Sprite {
 
     @Override
     public void draw(Graphics2D graphics) {
-        Color livesColor = new Color(0 ,255 * (Const.BOX_ROWS - this.lives )/ Const.BOX_ROWS, 255); // Color white
+        Color livesColor = new Color(0 ,255 * (Const.BOX_ROWS - this.lives + 1 )/ Const.BOX_ROWS, 255); // Color white
 
         graphics.setColor(livesColor);
         graphics.fillRect(getX(), getY(), getWidth(), getHeight());

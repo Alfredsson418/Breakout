@@ -1,20 +1,27 @@
 package Engine;
 
+import Const.Const;
 import Entities.Ball;
 import Entities.BoxCollection;
 import Entities.Player;
-import Const.Const;
-import Score.PlayerScore;
+import Score.ScoreBoard;
 
+import javax.swing.*;
 import java.awt.*;
 
 
 public class Game {
 
-	Player player;
-	Ball ball;
-	BoxCollection collection;
-	PlayerScore score;
+	private Player player;
+
+    private Ball ball;
+
+	private BoxCollection collection;
+
+	private GameBoard board;
+
+	private ScoreBoard scoreBoard;
+
 
 
 
@@ -23,15 +30,35 @@ public class Game {
 
 		player = new Player(board, Const.PLAYER_WIDTH, Const.PLAYER_HEIGHT);
 
-		ball = new Ball(board, Const.BALL_WIDTH, Const.BALL_HEIGHT);
+		ball = new Ball();
 
-		collection = new BoxCollection(Const.BOX_ROWS);
+		collection = new BoxCollection();
 
-		score = new PlayerScore(10, 10);
+		this.board = board;
 
 	}
 
 	public void update(Keyboard keyboard) {
+		if (ball.getLives() < 0) {
+			String initials = JOptionPane.showInputDialog("Good work! Put in your initials to save your score!");
+			while (initials.length() < 3){
+				initials = JOptionPane.showInputDialog("Good work! Put in your initials to save your score!");
+			}
+			initials = initials.substring(0, 3);
+			scoreBoard.getCurrentScore().setInitials(initials);
+
+            scoreBoard.addCurrentScore();
+			board.restart();
+			return;
+		}
+
+		if (collection.isAllDestoryed()) {
+			JOptionPane.showMessageDialog(board, "Good job! Your score is " + scoreBoard.getCurrentScore());
+            scoreBoard.addCurrentScore();
+			board.restart();
+			return;
+		}
+
 		player.update(keyboard);
 		ball.update(keyboard);
 		if (ball.intersects(player)) {
@@ -40,10 +67,11 @@ public class Game {
 
 		int points = collection.update(ball);
 		if (points > 0) {
-			score.setScore(score.getScore() + points);
-			ball.updateSpeed(score.getScore());
+			scoreBoard.getCurrentScore().setScore(scoreBoard.getCurrentScore().getScore() + points);
+			ball.updateSpeed(scoreBoard.getCurrentScore().getScore());
 		}
 
+        scoreBoard.update();
 
 
 	}
@@ -52,7 +80,32 @@ public class Game {
 		player.draw(graphics);
 		ball.draw(graphics);
 		collection.draw(graphics);
-		score.draw(graphics);
+		ball.drawLives(graphics);
+		scoreBoard.drawCurrentScore(graphics);
 
 	}
+
+	public void setScoreBoard(ScoreBoard scoreBoard) {
+		this.scoreBoard = scoreBoard;
+	}
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Ball getBall() {
+        return ball;
+    }
+
+    public BoxCollection getCollection() {
+        return collection;
+    }
+
+    public ScoreBoard getScoreBoard() {
+        return scoreBoard;
+    }
+
+    public GameBoard getBoard() {
+        return board;
+    }
 }
