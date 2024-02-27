@@ -1,6 +1,7 @@
 package Engine;
 
 import Const.Const;
+import Score.ScoreBoard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,7 @@ public class GameBoard extends JPanel {
 	private final int FPS = 40; 
 	private Game game;
 	private Keyboard keyboard;
+
 
 	private boolean stop = false;
 	public GameBoard() {
@@ -58,5 +60,16 @@ public class GameBoard extends JPanel {
 
 	public void stop() {
 		this.stop = true;
+	}
+
+    public void restart() {
+        this.game.getBall().setLives(Const.BALL_START_LIVES);
+        this.game.getScoreBoard().getCurrentScore().setScore(0);
+        this.game.getBall().reset();
+		this.game.getCollection().reset();
+    }
+
+	public void setScoreBoard(ScoreBoard scoreBoard) {
+		game.setScoreBoard(scoreBoard);
 	}
 }

@@ -12,23 +12,29 @@ public class Program extends JFrame {
 	ScoreBoard scoreBoard;
 	public Program() {
 
-		board = new GameBoard();
-		scoreBoard = new ScoreBoard();
+		this.board = new GameBoard();
+		this.scoreBoard = new ScoreBoard();
+
+		board.setScoreBoard(scoreBoard);
+
 		this.setLayout(new BorderLayout());
-		add(board, BorderLayout.CENTER);
-		add(scoreBoard, BorderLayout.EAST);
-		setResizable(true);
-		pack();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
-		board.start();
+
+		this.add(board, BorderLayout.CENTER);
+		this.add(scoreBoard, BorderLayout.EAST);
+
+
+		this.setResizable(true);
+		this.pack();
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setVisible(true);
+		this.board.start();
 
 	}
 	
 	@Override
 	protected void processKeyEvent(KeyEvent e) {
 		super.processKeyEvent(e);
-		board.processKeyEvent(e);
+		this.board.processKeyEvent(e);
 	}
 
 	public static void main(String[] args) {

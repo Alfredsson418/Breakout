@@ -1,10 +1,10 @@
 package Entities;
 
+import Const.Const;
 import Engine.GameBoard;
 import Engine.Key;
 import Engine.Keyboard;
 import Engine.Sprite;
-import Const.Const;
 
 import java.awt.*;
 

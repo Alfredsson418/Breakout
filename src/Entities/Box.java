@@ -1,8 +1,8 @@
 package Entities;
 
+import Const.Const;
 import Engine.Keyboard;
 import Engine.Sprite;
-import Const.Const;
 
 import java.awt.*;
 
