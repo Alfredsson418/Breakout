@@ -40,12 +40,13 @@ public class Const {
     public static final Font SCORE_TITLE_FONT = new Font("SCORE_FONT", Font.BOLD, 20);
     public static final Font SCORE_LIST_FONT = new Font("SCORE_LIST_FONT", Font.ITALIC, 15);
     public static final int SCOREBOARD_LENGTH = 5;
-
     public static final String HIGH_SCORE_TITLE = "High Score";
     public static final String LATEST_RUN_TITLE = "Latest Run";
     public static final int CURRENT_SCORE_X = 100;
     public static final int CURRENT_SCORE_Y = Const.WINDOW_HEIGHT - 30;
 
+
+    public static final int INITIALS_LENGTH = 3;
 
 
 

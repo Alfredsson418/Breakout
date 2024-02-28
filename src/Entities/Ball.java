@@ -63,6 +63,7 @@ public class Ball extends Sprite {
             this.rads = generateRandomAngle();
         }
 
+
         double x = Math.cos(rads) * this.speed;
         double y = Math.sin(rads) * this.speed;
         // System.out.println("Ange = " + rads * 180 / Math.PI + "  X = " + x + "  Y = " + y );
@@ -70,6 +71,8 @@ public class Ball extends Sprite {
 
         // Negative because y0 is at top
         this.setY(getY() - (int)y);
+
+        System.out.println(this.rads);
 
     }
 
@@ -126,7 +129,11 @@ public class Ball extends Sprite {
 
         } else if (BallObj.intersects(top)) {
              if (obj instanceof Player) {
-                 this.rads = Math.PI * ((obj.getWidth() - ((this.getX() + (double) this.getWidth() / 2) - (double) obj.getX())) / obj.getWidth());
+                 double testAngle = Math.PI * ((obj.getWidth() - ((this.getX() + (double) this.getWidth() / 2) - (double) obj.getX())) / obj.getWidth());
+                 if (testAngle > 2.99 && testAngle < 3.29) {
+                     testAngle += 0.15;
+                 }
+                 this.rads = testAngle;
              } else {
                  this.rads = this.rads * -1;
              }
@@ -143,7 +150,8 @@ public class Ball extends Sprite {
     }
 
     public void updateSpeed(int score) {
-        if (score % 5 == 0) {
+        // This does not really work well with collisions
+        if (score % 10 == 0) {
             this.speed += 1;
         }
     }

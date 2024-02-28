@@ -28,7 +28,7 @@ public class Game {
 
 	public Game(GameBoard board) {
 
-		player = new Player(board, Const.PLAYER_WIDTH, Const.PLAYER_HEIGHT);
+		player = new Player(board);
 
 		ball = new Ball();
 
@@ -41,10 +41,10 @@ public class Game {
 	public void update(Keyboard keyboard) {
 		if (ball.getLives() < 0) {
 			String initials = JOptionPane.showInputDialog("Good work! Put in your initials to save your score!");
-			while (initials.length() < 3){
+			while (initials.length() < Const.INITIALS_LENGTH){
 				initials = JOptionPane.showInputDialog("Good work! Put in your initials to save your score!");
 			}
-			initials = initials.substring(0, 3);
+			initials = initials.substring(0, Const.INITIALS_LENGTH);
 			scoreBoard.getCurrentScore().setInitials(initials);
 
             scoreBoard.addCurrentScore();

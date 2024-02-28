@@ -10,8 +10,8 @@ import java.awt.*;
 
 public class Player extends Sprite {
 
-    public Player(GameBoard board, int width, int height) {
-        super(0, 0, width, height);
+    public Player(GameBoard board) {
+        super(0, 0, Const.PLAYER_WIDTH, Const.PLAYER_HEIGHT);
         int x = board.getPreferredSize().width;
         int y = board.getPreferredSize().height;
 

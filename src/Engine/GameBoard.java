@@ -64,9 +64,11 @@ public class GameBoard extends JPanel {
 
     public void restart() {
         this.game.getBall().setLives(Const.BALL_START_LIVES);
+		this.game.getBall().updateSpeed(Const.BALL_START_SPEED);
         this.game.getScoreBoard().getCurrentScore().setScore(0);
         this.game.getBall().reset();
 		this.game.getCollection().reset();
+
     }
 
 	public void setScoreBoard(ScoreBoard scoreBoard) {
