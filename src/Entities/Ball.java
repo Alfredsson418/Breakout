@@ -22,7 +22,6 @@ public class Ball extends Sprite {
         this.setX(Const.BALL_START_X);
         this.setY(Const.BALL_START_Y);
 
-        // this.rads = 19*Math.PI/180;
         this.rads = generateRandomAngle();
 
     }
@@ -41,7 +40,7 @@ public class Ball extends Sprite {
     @Override
     public void update(Keyboard keyboard) {
         if (this.rads > 2 * Math.PI) { this.rads -= 2 * Math.PI; }
-        // System.out.println(this.rads);
+
         if (this.getX() + this.getWidth() > Const.WINDOW_WIDTH) { // Right
             this.rads = Math.PI - this.rads;
             this.setX(Const.WINDOW_WIDTH - this.getWidth());
@@ -49,11 +48,9 @@ public class Ball extends Sprite {
         } else if (this.getX() < 0) { // Left
             this.rads = Math.PI - this.rads;
             this.setX(0);
-            // this.setX(this.getWidth());
 
         }else if (this.getY() < 0) { // Top
             this.rads = this.rads * -1;
-            // this.setY(0);
             this.setY(0);
 
         } else if (this.getY() + this.getHeight() > Const.WINDOW_HEIGHT) { // Bottom
@@ -62,17 +59,13 @@ public class Ball extends Sprite {
             this.setY(Const.BALL_START_Y);
             this.rads = generateRandomAngle();
         }
-
-
         double x = Math.cos(rads) * this.speed;
         double y = Math.sin(rads) * this.speed;
-        // System.out.println("Ange = " + rads * 180 / Math.PI + "  X = " + x + "  Y = " + y );
+
         this.setX(getX() + (int)x);
 
         // Negative because y0 is at top
         this.setY(getY() - (int)y);
-
-        System.out.println(this.rads);
 
     }
 
@@ -96,35 +89,11 @@ public class Ball extends Sprite {
 
          if (BallObj.intersects(left)) {
             this.rads = Math.PI - this.rads;
-
-            /*
-            // 180 degrees and higher
-            if (this.rads > Math.PI) {
-                this.rads = 3 * Math.PI - this.rads;
-            } else if (this.rads < Math.PI) {
-                this.rads = Math.PI - this.rads;
-            }
-
-             */
-
             this.setX(obj.getX() - this.getWidth() - 1);
 
         } else if (BallObj.intersects(right)) {
 
             this.rads = Math.PI - this.rads;
-
-            /*
-
-            if (this.rads > Math.PI) {
-                this.rads = 3 * Math.PI - this.rads;
-            } else if (this.rads < Math.PI) {
-                this.rads = Math.PI - this.rads;
-            }
-
-            this.setX(obj.getX() + obj.getWidth() + 1);
-
-             */
-
             this.setX(obj.getX() + obj.getWidth() + 1);
 
         } else if (BallObj.intersects(top)) {
@@ -137,7 +106,7 @@ public class Ball extends Sprite {
              } else {
                  this.rads = this.rads * -1;
              }
-             // this.rads = this.rads * -1;
+
              this.setY(obj.getY() - this.getHeight());
 
         } else if (BallObj.intersects(bottom)) {
@@ -145,8 +114,6 @@ public class Ball extends Sprite {
             this.setY(obj.getY() + this.getHeight());
 
         }
-
-
     }
 
     public void updateSpeed(int score) {

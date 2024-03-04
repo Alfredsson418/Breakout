@@ -21,7 +21,6 @@ public class BoxCollection {
 
         for (int i = 2; i < Const.BOX_ROWS + Const.EMPTY_ROWS; i++) {
             for (int j = 0; j < Const.BOX_PER_ROW; j++) {
-                // collection.add(j, new Box((j * (Const.BOX_WIDTH + 5)) + Const.BOX_WIDTH * 2, i * (Const.BOX_HEIGHT + 5), Const.BOX_WIDTH, Const.BOX_HEIGHT ));
                 collection.add(j, new Box(j * (Const.BOX_WIDTH + 5), i * (Const.BOX_HEIGHT + 5), Const.BOX_WIDTH, Const.BOX_HEIGHT , Const.BOX_ROWS + Const.EMPTY_ROWS - i));
             }
         }
@@ -50,8 +49,6 @@ public class BoxCollection {
         for (Box box : collection) {
             if (box.isDestroyed) { continue; }
             box.draw(graphics);
-            // graphics.setColor(Color.YELLOW);
-            // graphics.drawString(String.valueOf(box.lives), box.getX() + box.getWidth() / 2, box.getY() + box.getHeight() / 2);
         }
     }
 

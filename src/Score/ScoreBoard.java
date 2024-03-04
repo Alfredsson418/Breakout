@@ -11,7 +11,7 @@ public class ScoreBoard extends JPanel {
 
     private HighScore highScore;
 
-    private LastestRunScore lastestRunScore;
+    private LatestRunScore lastestRunScore;
 
 
     public ScoreBoard() {
@@ -26,7 +26,7 @@ public class ScoreBoard extends JPanel {
         this.highScore = new HighScore();
         this.add(highScore);
 
-        this.lastestRunScore = new LastestRunScore();
+        this.lastestRunScore = new LatestRunScore();
         this.add(lastestRunScore);
 
 

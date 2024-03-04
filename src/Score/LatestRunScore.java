@@ -5,7 +5,7 @@ import Const.Const;
 import javax.swing.*;
 import java.awt.*;
 
-public class LastestRunScore extends JPanel {
+public class LatestRunScore extends JPanel {
 
     private JLabel title;
 
@@ -13,7 +13,7 @@ public class LastestRunScore extends JPanel {
     private DefaultListModel<String> latest;
 
 
-    public LastestRunScore() {
+    public LatestRunScore() {
         setLayout(new BorderLayout());
 
 
