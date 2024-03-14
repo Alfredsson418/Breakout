@@ -24,6 +24,7 @@ public class LatestRunScore extends JPanel {
         this.latest = new DefaultListModel<>();
 
         this.list= new JList(this.latest);
+        this.list.setFont(Const.SCORE_LIST_FONT);
         this.list.setFocusable(false);
 
 
@@ -31,13 +32,19 @@ public class LatestRunScore extends JPanel {
 
     }
 
+    public void update() {
+        if (this.latest.size() > Const.SCOREBOARD_LATEST_RUNS_LIST_LENGTH){
+            this.latest.remove(this.latest.size() - 1);
+        }
+    }
+
     public void addRun(int score) {
-        this.latest.add(0, "Score: " + score);
+        this.latest.add(0, String.valueOf(score));
     }
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(200, Const.WINDOW_HEIGHT/2);
+        return new Dimension(Const.SCOREBOARD_PANEL_WIDTH, Const.WINDOW_HEIGHT/2);
     }
 
 }

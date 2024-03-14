@@ -18,6 +18,7 @@ public class Player extends Sprite {
         // Sets player in the middle
         setX(x/2 - getWidth()/2);
 
+        // 0.85 is a percentage
         setY((int) (y * 0.85));
     }
 

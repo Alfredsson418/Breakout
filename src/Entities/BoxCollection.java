@@ -10,7 +10,7 @@ public class BoxCollection {
     public ArrayList<Box> collection;
 
     public BoxCollection() {
-        collection = new ArrayList<>(100);
+        collection = new ArrayList<>(Const.BOX_COLLECTION_SIZE);
         this.resetBoxes();
 
     }
@@ -21,7 +21,7 @@ public class BoxCollection {
 
         for (int i = 2; i < Const.BOX_ROWS + Const.EMPTY_ROWS; i++) {
             for (int j = 0; j < Const.BOX_PER_ROW; j++) {
-                collection.add(j, new Box(j * (Const.BOX_WIDTH + 5), i * (Const.BOX_HEIGHT + 5), Const.BOX_WIDTH, Const.BOX_HEIGHT , Const.BOX_ROWS + Const.EMPTY_ROWS - i));
+                collection.add(j, new Box(j * (Const.BOX_WIDTH + Const.BOX_WIDTH_OFFSET), i * (Const.BOX_HEIGHT + Const.BOX_HEIGHT_OFFSET), Const.BOX_WIDTH, Const.BOX_HEIGHT , Const.BOX_ROWS + Const.EMPTY_ROWS - i));
             }
         }
     }

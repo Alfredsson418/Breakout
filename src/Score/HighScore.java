@@ -23,6 +23,7 @@ public class HighScore extends JPanel {
         this.highScore = new DefaultListModel<>();
 
         this.list= new JList(this.highScore);
+        this.list.setFont(Const.SCORE_LIST_FONT);
         this.list.setFocusable(false);
 
 
@@ -45,9 +46,15 @@ public class HighScore extends JPanel {
 
     }
 
+    public void update() {
+        if (this.highScore.size() > Const.SCOREBOARD_HIGH_SCORE_LIST_LENGTH){
+            this.highScore.remove(this.highScore.size() - 1);
+        }
+    }
+
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(200, Const.WINDOW_HEIGHT/2);
+        return new Dimension(Const.SCOREBOARD_PANEL_WIDTH, Const.WINDOW_HEIGHT/2);
     }
 }

@@ -33,7 +33,8 @@ public class ScoreBoard extends JPanel {
     }
 
     public void update() {
-
+        this.lastestRunScore.update();
+        this.highScore.update();
     }
 
     public void drawCurrentScore(Graphics2D graphics) {
@@ -52,6 +53,6 @@ public class ScoreBoard extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(200, Const.WINDOW_HEIGHT);
+        return new Dimension(Const.SCOREBOARD_PANEL_WIDTH, Const.WINDOW_HEIGHT);
     }
 }

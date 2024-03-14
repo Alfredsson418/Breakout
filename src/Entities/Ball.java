@@ -92,7 +92,6 @@ public class Ball extends Sprite {
             this.setX(obj.getX() - this.getWidth() - 1);
 
         } else if (BallObj.intersects(right)) {
-
             this.rads = Math.PI - this.rads;
             this.setX(obj.getX() + obj.getWidth() + 1);
 
@@ -118,8 +117,8 @@ public class Ball extends Sprite {
 
     public void updateSpeed(int score) {
         // This does not really work well with collisions
-        if (score % 10 == 0) {
-            this.speed += 1;
+        if (score % Const.TEN == 0) {
+            this.speed++;
         }
     }
 

@@ -39,21 +39,18 @@ public class Game {
 	}
 
 	public void update(Keyboard keyboard) {
-		if (ball.getLives() < 0) {
-			String initials = JOptionPane.showInputDialog("Good work! Put in your initials to save your score!");
-			while (initials.length() < Const.INITIALS_LENGTH){
-				initials = JOptionPane.showInputDialog("Good work! Put in your initials to save your score!");
-			}
+
+		if (ball.getLives() < 0 || collection.isAllDestoryed()) {
+			String initials;
+			do {
+				initials = JOptionPane.showInputDialog("Good work! \n" +
+						" Your Score is: " + scoreBoard.getCurrentScore().getScore() + " \n " +
+						"Please put in your initials to save your score!");
+			} while (initials.length() < Const.INITIALS_LENGTH);
+
 			initials = initials.substring(0, Const.INITIALS_LENGTH);
 			scoreBoard.getCurrentScore().setInitials(initials);
 
-            scoreBoard.addCurrentScore();
-			board.restart();
-			return;
-		}
-
-		if (collection.isAllDestoryed()) {
-			JOptionPane.showMessageDialog(board, "Good job! Your score is " + scoreBoard.getCurrentScore());
             scoreBoard.addCurrentScore();
 			board.restart();
 			return;
