@@ -13,14 +13,14 @@ public class Program extends JFrame {
 	public Program() {
 
 		this.board = new GameBoard();
-		this.scoreBoard = new ScoreBoard();
+		// this.scoreBoard = new ScoreBoard();
 
-		board.setScoreBoard(scoreBoard);
+		// board.setScoreBoard(scoreBoard);
 
 		this.setLayout(new BorderLayout());
 
 		this.add(board, BorderLayout.CENTER);
-		this.add(scoreBoard, BorderLayout.EAST);
+		// this.add(scoreBoard, BorderLayout.EAST);
 
 
 		this.setResizable(true);

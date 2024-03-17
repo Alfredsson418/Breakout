@@ -20,7 +20,6 @@ public class Const {
     public static final int BOX_WIDTH = 40;
     public static final int BOX_HEIGHT = 20;
     public static final int BOX_PER_ROW = (Const.WINDOW_WIDTH / (Const.BOX_WIDTH)) -  3;
-
     public static final int BOX_ROWS = 1;
     public static final int EMPTY_ROWS = 2;
     public static final int BOX_WIDTH_OFFSET = (Const.WINDOW_WIDTH - (Const.BOX_PER_ROW * Const.BOX_WIDTH)) / Const.BOX_PER_ROW;

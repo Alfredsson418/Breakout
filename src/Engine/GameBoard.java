@@ -8,7 +8,9 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class GameBoard extends JPanel {
-	private final int FPS = 40; 
+	// The game feels more "clean" with 60 FPS
+	// Change this to 40 if you have problems with the game
+	private final int FPS = 60;
 	private Game game;
 	private Keyboard keyboard;
 
@@ -65,7 +67,8 @@ public class GameBoard extends JPanel {
     public void restart() {
         this.game.getBall().setLives(Const.BALL_START_LIVES);
 		this.game.getBall().updateSpeed(Const.BALL_START_SPEED);
-        this.game.getScoreBoard().getCurrentScore().setScore(0);
+		if (this.game.getScoreBoard() != null)
+        	this.game.getScoreBoard().getCurrentScore().setScore(0);
         this.game.getBall().reset();
 		this.game.getCollection().reset();
 
